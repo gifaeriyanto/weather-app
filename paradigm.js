@@ -10,16 +10,14 @@ class Perahu {
     }
   }
 
-  keterangan = title => {
-    const separator = '-'.repeat(title.length);
-    console.log(separator);
-    console.log(title);
-    console.log(separator);
-    console.log(`Nama: ${this.nama}`);
-    console.log(`Panjang: ${this.panjang}m`);
-    console.log(`Lebar: ${this.lebar}m`);
-    console.log(`Kapasitas: ${this.kapasitas} orang`);
-  };
+  tampilkan() {
+    return {
+      name: this.nama,
+      panjang: this.panjang,
+      lebar: this.lebar,
+      kapasitas: this.kapasitas,
+    };
+  }
 }
 
 class PerahuMotor extends Perahu {
@@ -28,10 +26,15 @@ class PerahuMotor extends Perahu {
     this.mesin = mesin;
   }
 
-  tampilkan = () => {
-    this.keterangan('Denah Perahu Motor');
-    console.log(`Mesin: ${this.mesin}`);
-  };
+  tampilkan() {
+    let data = super.tampilkan();
+    data = {
+      ...data,
+      title: 'Denah Perahu Motor',
+      mesin: this.mesin,
+    };
+    console.log(data);
+  }
 }
 
 class PerahuLayar extends Perahu {
@@ -41,11 +44,16 @@ class PerahuLayar extends Perahu {
     this.tinggiLayar = tinggiLayar;
   }
 
-  tampilkan = () => {
-    this.keterangan('Denah Perahu Layar');
-    console.log(`Lebar Layar: ${this.lebarLayar}m`);
-    console.log(`Tinggi Layar: ${this.tinggiLayar}m`);
-  };
+  tampilkan() {
+    let data = super.tampilkan();
+    data = {
+      ...data,
+      title: 'Denah Perahu Layar',
+      lebarLayar: this.lebarLayar,
+      tinggiLayar: this.tinggiLayar,
+    };
+    console.log(data);
+  }
 }
 
 class KapalPesiar extends Perahu {
@@ -54,10 +62,15 @@ class KapalPesiar extends Perahu {
     this.lantai = lantai;
   }
 
-  tampilkan = () => {
-    this.keterangan('Denah Kapal Pesiar');
-    console.log(`Lantai: ${this.lantai} lantai`);
-  };
+  tampilkan() {
+    let data = super.tampilkan();
+    data = {
+      ...data,
+      title: 'Denah Kapal Pesiar',
+      lantai: this.lantai,
+    };
+    console.log(data);
+  }
 }
 
 const perahuMotor = new PerahuMotor('PM001', 5, 1.5, 5, 'Yamaha Enduro 40k');
